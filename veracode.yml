@@ -57,3 +57,7 @@ jobs:
       with:
         # Path to SARIF file relative to the root of the repository
         sarif_file: veracode-results.sarif
+        
+    - name: Veracode Dependency Scanning
+      uses: veracode/veracode-sca@v2.0.65
+
