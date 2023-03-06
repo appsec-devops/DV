@@ -58,30 +58,16 @@ jobs:
         # Path to SARIF file relative to the root of the repository
         sarif_file: veracode-results.sarif
         
-  name: Veracode Dependency Scanning
-  # You may pin to the exact commit or the version.
-  uses: veracode/veracode-sca@9ab4d631fc9a0f14e1f9322c0d61bea90e924de1
-  uses: veracode/veracode-sca@v2.0.65 
-  with:
-    # Authorization token to query and create issues
-    github_token: # default is ${{ github.token }}
-    # Run the SRCCLR with the `--quick` options
-    quick: # optional, default is false
-    # Show update advisor
-    update_advisor: # optional, default is false
-    # A git URL to work with in case the scan is not for the current repository
-    url: # optional, default is 
-    # An attribute to instruct the action to create an issue from found vulnerability or just simple text output
-    create-issues: # optional, default is false
-    # A path within the repository where the build definition starts
-    path: # optional, default is .
-    # Run the SRCCLR in debug mode
-    debug: # optional, default is false
-    # Run the SRCCLR with the `--skip-collectors` options
-    skip-collectors: # optional, default is false
-    # Run the SRCCLR with the `--allow-dirty` option
-    allow-dirty: # optional, default is false
-    # Run the SRCCLR with the `--recursive` option
-    recursive: # optional, default is false
-    # Run the SRCCLR with the `--skip-vms` option
-    skip-vms: # optional, default is false
+    - name: Veracode Dependency Scanning
+      uses: veracode/veracode-sca@v2.1.6
+      with:
+        github_token: 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
+        quick: true
+        url: https://github.com/appsec-devops/DV
+        create-issues: true
+        path: .
+        allow-dirty: false
+        recursive: true
+        fail-on-cvss: 1
+        min-cvss-for-issue: 1
+        debug: false
